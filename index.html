@@ -4,10 +4,98 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>IIT Bombay</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css"
+    />
   </head>
   <body>
-    <h1>Chemicals</h1>
-    <script src="script.js"></script>
+    <div class="container">
+      <form class="form" id="form">
+        <button id="cancel-btn" class="btn">X</button>
+        <h2 class="form-heading">Add new Chemical</h2>
+        <div>
+          <label for="id">Id:</label>
+          <input required name="id" id="id" type="text" />
+        </div>
+        <div>
+          <label for="chemical_name">Chemical name:</label>
+          <input required name="chemical_name" id="chemical_name" type="text" />
+        </div>
+        <div>
+          <label for="vendor">Vendor:</label>
+          <input required name="vendor" id="vendor" type="text" />
+        </div>
+        <div>
+          <label for="density">Density:</label>
+          <input required name="density" id="density" type="text" />
+        </div>
+        <div>
+          <label for="viscosity">Viscosity:</label>
+          <input required name="viscosity" id="viscosity" type="text" />
+        </div>
+        <div>
+          <label for="packaging">Packaging:</label>
+          <input required name="packaging" id="packaging" type="text" />
+        </div>
+        <div>
+          <label for="pack_size">Pack size:</label>
+          <input required name="pack_size" id="pack_size" type="text" />
+        </div>
+        <div>
+          <label for="unit">Unit:</label>
+          <input required name="unit" id="unit" type="text" />
+        </div>
+        <div>
+          <label for="quantity">Quantity:</label>
+          <input required name="quantity" id="quantity" type="text" />
+        </div>
+        <button id="add-btn">Add</button>
+      </form>
+      <div class="toolbar">
+        <span>Chemical supplies</span>
+        <div id="buttons"></div>
+      </div>
+      <div class="table-container">
+        <table class="table">
+          <thead id="table-head" class="table-head">
+            <tr>
+              <th data-key="id" class="t-head">id</th>
+              <th data-key="chemical_name" class="t-head border-r">
+                Chemical name
+              </th>
+              <th data-key="vendor" class="t-head">Vendor</th>
+              <th data-key="density" class="t-head">Density</th>
+              <th data-key="viscosity" class="t-head">Viscosity</th>
+              <th data-key="packaging" class="t-head">Packaging</th>
+              <th data-key="pack_size" class="t-head">Pack size</th>
+              <th data-key="unit" class="t-head">Unit</th>
+              <th data-key="quantity" class="t-head">Quantity</th>
+            </tr>
+            <tr class="units">
+              <td></td>
+              <td class="border-r"></td>
+              <td></td>
+              <td>g/cm³</td>
+              <td>mPa·s</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </thead>
+          <tbody id="table-rows"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <script type="module" src="script.js"></script>
   </body>
 </html>

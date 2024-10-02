@@ -1,0 +1,186 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: "Source Code Pro", monospace;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  position: relative;
+}
+
+.toolbar {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding: 10px 0px;
+  span {
+    font-size: 20px;
+  }
+}
+
+#buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.btn {
+  cursor: pointer;
+  font-size: 1.2rem;
+  padding: 7px;
+  background-color: transparent;
+  border: none;
+  border-radius: 100%;
+  &:hover {
+    background-color: rgb(230, 230, 230);
+    color: red;
+  }
+}
+
+.table-container {
+  max-height: 90vh;
+  width: 90vw;
+  overflow: scroll;
+  border: 1px solid gray;
+}
+
+.table {
+  position: relative;
+  border-collapse: collapse;
+  border: 1px solid gray;
+  min-width: 100%;
+  min-height: 100%;
+  th,
+  td {
+    padding: 5px 10px;
+  }
+}
+
+.table-head {
+  position: sticky;
+  top: 0;
+  box-shadow: 0px 5px 5px rgba(62, 62, 62, 0.183);
+  width: 100%;
+  background-color: rgb(255, 252, 233);
+  border-bottom: 1px solid gray;
+  tr th {
+    cursor: default;
+    &:hover {
+      background-color: rgb(228, 215, 131);
+    }
+  }
+}
+
+.units {
+  text-align: center;
+  font-size: 14px;
+  color: gray;
+}
+
+.border-r {
+  border-right: 1px solid gray;
+}
+
+.row:hover {
+  background-color: rgb(223, 239, 255);
+}
+
+.selected-row {
+  background-color: rgb(186, 221, 255);
+  &:hover {
+    background-color: rgb(186, 221, 255);
+  }
+}
+
+.input {
+  padding: 2px;
+  width: 100px;
+  text-align: right;
+  font-family: "Source Code Pro", monospace;
+  font-size: 15px;
+}
+
+.form {
+  display: none;
+  position: absolute;
+  padding: 20px;
+  gap: 10px;
+  border: 1px solid gray;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  z-index: 99;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+  .form-heading {
+    margin-bottom: 10px;
+    border-bottom: 1px solid gray;
+  }
+  .btn {
+    position: absolute;
+    right: 3px;
+    top: 3px;
+    height: 40px;
+    width: 40px;
+  }
+  div {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+    align-items: center;
+    label {
+      width: 50%;
+      text-align: right;
+    }
+    input {
+      width: 300px;
+      min-width: 100px;
+      padding: 5px;
+      font-family: "Source Code Pro", monospace;
+    }
+  }
+  #add-btn {
+    padding: 5px 20px;
+    cursor: pointer;
+    text-transform: uppercase;
+    border: none;
+    width: 100px;
+    background-color: rgb(228, 215, 131);
+    margin-top: 10px;
+    &:hover {
+      background-color: rgb(200, 183, 77);
+    }
+  }
+}
+
+.show {
+  display: flex;
+}
+
+@media (max-width: 600px) {
+  .toolbar {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .form {
+    div {
+      flex-direction: column;
+      gap: 0;
+      label {
+        align-self: flex-start;
+        text-align: left;
+      }
+      input {
+        width: 200px;
+      }
+    }
+  }
+}
