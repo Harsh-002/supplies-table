@@ -1,7 +1,7 @@
 import { invoices } from "./data.js";
 
 // Create a copy of original data
-let data = Array.from(invoices);
+let data = structuredClone(invoices);
 
 // Function to create a table row
 const tableRow = ({
@@ -211,7 +211,7 @@ function refreshFn() {
 function editFn(row) {
   const inputs = Array.from(row.querySelectorAll("input"));
 
-  inputs.map((input) => {
+  inputs.forEach((input) => {
     input.disabled = false;
   });
 }

@@ -36,7 +36,7 @@
 
 ### script.js
 
-1. Imported data from data.js file and stored a shallow copy of original data
+1. Imported data from data.js file and stored a deep copy of original data in "data" variable
 2. Created a "tableRow({
    id,
    chemical_name,
