@@ -39,8 +39,11 @@ let selectedRow = null;
 // Function to set selected row
 function setSelectedRow(row) {
   tableRowsArray.map((row) => row.classList.remove("selected-row"));
-  selectedRow = row;
-  selectedRow.classList.add("selected-row");
+
+  if (row) {
+    selectedRow = row;
+    selectedRow.classList.add("selected-row");
+  }
 }
 
 //Creates data rows using chemicals data and appends it to tableRows
@@ -251,12 +254,17 @@ let tableHeads = document.querySelectorAll(".t-head");
 let sortOrder = 1;
 
 // Function to sort data based on specific property
-function sort(head) {
+function sort(data, head) {
   let key = head.dataset.key;
 
+  console.log(data);
+
   data.sort((a, b) => {
-    if (a[key] < b[key]) return -1 * sortOrder;
-    if (a[key] > b[key]) return 1 * sortOrder;
+    const valueA = isNaN(a[key]) ? a[key].toLowerCase() : parseFloat(a[key]);
+    const valueB = isNaN(b[key]) ? b[key].toLowerCase() : parseFloat(b[key]);
+
+    if (valueA < valueB) return -1 * sortOrder;
+    if (valueA > valueB) return 1 * sortOrder;
     return 0;
   });
 
@@ -266,4 +274,6 @@ function sort(head) {
 }
 
 // Applying click functionality to all table heads
-tableHeads.forEach((head) => head.addEventListener("click", () => sort(head)));
+tableHeads.forEach((head) =>
+  head.addEventListener("click", () => sort(data, head))
+);
