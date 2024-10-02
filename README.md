@@ -28,6 +28,8 @@
 
 1. Used custom styling throughout the application
 2. No extra libraries used
+3. Design is responsive so that it can be used in mobiles also
+4. Website is cross-browser compatible
 
 ### data.js
 

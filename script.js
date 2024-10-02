@@ -1,7 +1,7 @@
 import { invoices } from "./data.js";
 
 // Create a copy of original data
-let data = structuredClone(invoices);
+let data = invoices.map((item) => ({ ...item }));
 
 // Function to create a table row
 const tableRow = ({
@@ -204,7 +204,10 @@ function deleteRow(data, row) {
 // Refresh Data Function after confirming
 function refreshFn() {
   const confirmation = confirm("This will reset all data!");
-  if (confirmation) appendRows(invoices);
+  if (confirmation) {
+    appendRows(invoices);
+    data = invoices.map((item) => ({ ...item }));
+  }
 }
 
 // Edit Data Function
@@ -256,8 +259,6 @@ let sortOrder = 1;
 // Function to sort data based on specific property
 function sort(data, head) {
   let key = head.dataset.key;
-
-  console.log(data);
 
   data.sort((a, b) => {
     const valueA = isNaN(a[key]) ? a[key].toLowerCase() : parseFloat(a[key]);
