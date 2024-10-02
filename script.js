@@ -261,8 +261,13 @@ function sort(data, head) {
   let key = head.dataset.key;
 
   data.sort((a, b) => {
-    const valueA = isNaN(a[key]) ? a[key].toLowerCase() : parseFloat(a[key]);
-    const valueB = isNaN(b[key]) ? b[key].toLowerCase() : parseFloat(b[key]);
+    let valueA = isNaN(a[key]) ? a[key].toLowerCase() : parseFloat(a[key]);
+    let valueB = isNaN(b[key]) ? b[key].toLowerCase() : parseFloat(b[key]);
+
+    if (key === "pack_size") {
+      valueA = parseInt(valueA);
+      valueB = parseInt(valueB);
+    }
 
     if (valueA < valueB) return -1 * sortOrder;
     if (valueA > valueB) return 1 * sortOrder;
@@ -278,3 +283,19 @@ function sort(data, head) {
 tableHeads.forEach((head) =>
   head.addEventListener("click", () => sort(data, head))
 );
+
+// Function to unselect selected row
+function unselectRow() {
+  if (selectedRow) {
+    selectedRow.classList.remove("selected-row");
+    selectedRow = null;
+  }
+}
+
+// Event listener to detect clicks outside the table
+document.addEventListener("click", function (event) {
+  // Check if the click was outside the table rows
+  if (!tableRows.contains(event.target)) {
+    unselectRow();
+  }
+});

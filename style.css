@@ -70,6 +70,7 @@ body {
   width: 100%;
   background-color: rgb(255, 252, 233);
   border-bottom: 1px solid gray;
+  z-index: 99;
   tr th {
     cursor: default;
     &:hover {
@@ -109,17 +110,19 @@ body {
 
 .form {
   display: none;
-  position: absolute;
+  position: fixed;
   padding: 20px;
   gap: 10px;
   border: 1px solid gray;
   flex-direction: column;
   align-items: center;
   background-color: white;
-  z-index: 99;
+  z-index: 100;
   transform: translate(-50%, -50%);
   left: 50%;
   top: 50%;
+  backdrop-filter: brightness(0.5);
+  -webkit-backdrop-filter: brightness(0.5);
   .form-heading {
     margin-bottom: 10px;
     border-bottom: 1px solid gray;
