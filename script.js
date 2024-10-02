@@ -37,13 +37,13 @@ let tableRowsArray = Array.from(tableRows.children);
 let selectedRow = null;
 
 // Function to set selected row
-function setSelectedRow(e, row) {
+function setSelectedRow(row) {
   tableRowsArray.map((row) => row.classList.remove("selected-row"));
 
-  if (e.target.parentNode === selectedRow) {
-    unselectRow();
-    return;
-  }
+  //   if (e?.target?.parentNode === selectedRow) {
+  //     unselectRow();
+  //     return;
+  //   }
 
   if (row) {
     selectedRow = row;
@@ -69,7 +69,7 @@ function appendRows(data, index) {
 
   // Add event listener to all rows
   tableRowsArray.map((row) =>
-    row.addEventListener("click", (e) => setSelectedRow(e, row))
+    row.addEventListener("click", () => setSelectedRow(row))
   );
 
   // Set selected row after deleting a row
@@ -159,7 +159,7 @@ addForm.addEventListener("submit", (e) => {
 
 // Move down function
 function moveDownFn(data, row) {
-  const id = parseInt(row.children[0].dataset.id);
+  const id = parseInt(row.children[0]?.dataset.id);
 
   const currentIdx = data.findIndex((item) => item.id === id);
 
@@ -177,7 +177,7 @@ function moveDownFn(data, row) {
 
 // Move up function
 function moveUpFn(data, row) {
-  const id = parseInt(row.children[0].dataset.id);
+  const id = parseInt(row.children[0]?.dataset.id);
 
   const currentIdx = data.findIndex((item) => item.id === id);
 
@@ -195,7 +195,7 @@ function moveUpFn(data, row) {
 
 // Delete Function
 function deleteRow(data, row) {
-  const id = parseInt(row.children[0].dataset.id);
+  const id = parseInt(row.children[0]?.dataset.id);
 
   const index = data.findIndex((item) => item.id === id);
 
@@ -228,7 +228,7 @@ function editFn(row) {
 function saveFn(data, row) {
   const inputs = Array.from(row.querySelectorAll("input"));
 
-  const id = parseInt(row.children[0].dataset.id);
+  const id = parseInt(row.children[0]?.dataset.id);
 
   const index = data.findIndex((item) => item.id === id);
 
