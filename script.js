@@ -37,8 +37,13 @@ let tableRowsArray = Array.from(tableRows.children);
 let selectedRow = null;
 
 // Function to set selected row
-function setSelectedRow(row) {
+function setSelectedRow(e, row) {
   tableRowsArray.map((row) => row.classList.remove("selected-row"));
+
+  if (e.target.parentNode === selectedRow) {
+    unselectRow();
+    return;
+  }
 
   if (row) {
     selectedRow = row;
@@ -64,7 +69,7 @@ function appendRows(data, index) {
 
   // Add event listener to all rows
   tableRowsArray.map((row) =>
-    row.addEventListener("click", () => setSelectedRow(row))
+    row.addEventListener("click", (e) => setSelectedRow(e, row))
   );
 
   // Set selected row after deleting a row
@@ -292,10 +297,12 @@ function unselectRow() {
   }
 }
 
+const container = document.getElementById("container");
+
 // Event listener to detect clicks outside the table
 document.addEventListener("click", function (event) {
   // Check if the click was outside the table rows
-  if (!tableRows.contains(event.target)) {
+  if (!container.contains(event.target)) {
     unselectRow();
   }
 });
